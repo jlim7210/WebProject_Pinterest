@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mp.member.mapper.MemberMapper">
+
+	<insert id="insertMember"
+		parameterType="com.mp.member.vo.Member">
+		insert into member (member_acc, member_pw, member_name)
+		values (#{member_acc}, #{member_pw}, #{member_name})
+	</insert>
+
+	<select id="indexMember" parameterType="com.mp.member.vo.Member"
+		resultType="com.mp.member.vo.Member">
+		select * from member
+		<trim prefix="where" prefixOverrides="AND | OR">
+			<if test="member_uqid != 0">
+				AND member_uqid = #{member_uqid}
+			</if>
+			<if test="member_acc != null">
+				AND member_acc = #{member_acc}
+			</if>
+			<if test="member_pw != null">
+				AND member_pw = #{member_pw}
+			</if>
+			<!-- 랭크 business logic은 좀 더 다듬고 추가. -1은 안되고 0은 기본값이라 -->
+			<!-- <if test="member_active != -1"> AND member_active = #{member_active} 
+				</if> <if test="member_rank != -1"> AND member_rank = #{member_rank} </if> -->
+			<if test="member_name != null">
+				AND member_name = #{member_name}
+			</if>
+		</trim>
+	</select>
+
+	<update id="edit" parameterType="com.mp.member.vo.Member">
+		update member
+		set
+		member_pw = #{member_pw},
+		member_active = #{member_active},
+		member_rank = #{member_rank},
+		member_name = #{member_name}
+		where
+		member_uqid = #{member_uqid}
+	</update>
+
+	<delete id="delete" parameterType="com.mp.member.vo.Member">
+		delete from member
+		where
+		member_uqid = #{member_uqid}
+	</delete>
+</mapper>

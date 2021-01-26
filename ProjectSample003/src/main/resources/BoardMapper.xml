@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mp.board.mapper.BoardMapper">
+
+	<insert id="create_board" parameterType="com.mp.board.vo.Board">
+		insert into board
+		(board_id, board_title, board_content)
+		values 
+		(#{board_id},#{board_title}, #{board_content})
+	</insert>
+
+	<select id="search_board" parameterType="com.mp.board.vo.Board"
+		resultType="com.mp.board.vo.Board">
+		select
+		board_id,
+		board_title,
+		board_content,
+		cre_date
+		from board
+		<trim prefix="where" prefixOverrides="AND | OR">
+			<if test="post_id != 0">
+				AND board_id = #{board_id}
+			</if>
+		</trim>
+	</select>
+	
+	<update id="edit_board" parameterType="com.mp.board.vo.Board">
+		update board
+		set
+		board_title = #{board_title},
+		board_content = #{board_content}
+		where board_id = #{board_id}
+	</update>
+
+	<delete id="delete_board" parameterType="com.mp.board.vo.Board">
+		delete from board
+		where board_id = #{board_id}
+	</delete>
+</mapper>

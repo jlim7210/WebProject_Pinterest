@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mp.reply.mapper.ReplyMapper">
+
+	<select id="idx_rep_bPost" parameterType="com.mp.post.vo.Post" resultType="map">
+		<!-- select * from reply
+		where post_id = #{post_id} -->
+		select 
+		r.reply_id, r.post_id, r.uqid, r.reply_content, r.is_active_rep, r.cre_date, m.member_name 
+		from reply r 
+		join member m
+		on r.uqid = m.member_uqid
+		where r.post_id = #{post_id} AND r.is_active_rep != 0
+	</select>
+	<select id="idx_rep_bPid" parameterType="int" resultType="map">
+		<!-- select * from reply
+		where post_id = #{post_id} -->
+		select 
+		r.reply_id, r.post_id, r.uqid, r.reply_content, r.is_active_rep, r.cre_date, m.member_name 
+		from reply r 
+		join member m
+		on r.uqid = m.member_uqid
+		where r.post_id = #{post_id} AND r.is_active_rep != 0
+	</select>
+	<select id="idx_rep_bUser" parameterType="int" resultType="map">
+		select 
+		r.reply_id, r.post_id, r.uqid, r.reply_content, r.is_active_rep, r.cre_date, m.member_name 
+		from reply r 
+		join member m 
+		on r.uqid = m.member_uqid 
+		where r.uqid = #{uqid} AND r.is_active_rep != 0
+	</select>
+	
+	<insert id="insert_reply" parameterType="com.mp.reply.vo.Reply">
+		insert into reply
+		(post_id, uqid, reply_content)
+		values
+		(#{post_id}, #{uqid}, #{reply_content})
+	</insert>
+	<update id="update_reply" parameterType="com.mp.reply.vo.Reply">
+		update reply
+		set
+		reply_content = #{reply_content},
+		cre_date = NOW()
+		where reply_id = #{reply_id}
+	</update>
+	<delete id="delete_reply" parameterType="com.mp.reply.vo.Reply">
+		<!-- delete from reply
+		where reply_id = #{reply_id} -->
+		update reply
+		set
+		is_active_rep = 0
+		where reply_id = #{reply_id}
+	</delete>
+</mapper>
