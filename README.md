@@ -11,8 +11,11 @@ My first personal web project. Reference to Pinterest
 사용기술:  
   * 백엔드: Java, MySQL, MyBatis, Tomcat, Websocket  
   * 프론트엔드: BootStrap, Thymeleaf, AJAX, JQuery, JavaScript, CSS, HTML  
+  
+  
 구현된 기능: 회원가입, 로그인, 유저관리, 게시글 조회/등록/수정/삭제 (파일 업로드 포함), 댓글 조회/등록/삭제, 실시간 채팅  
 앞으로 구현할 기능: 댓글 수정, 게시물 검색, 암호화(Spring Security 사용), 구글 드라이브 연동을 통한 파일 관리, AWS 사용  
+
 
 
 ***
