@@ -22,6 +22,9 @@ public class MemberService {
 	public List<Member> indexMember(Member member){
 		return memberDao.indexMember(member);
 	}
+	public List<Member> loginMember(Member member){
+		return memberDao.loginMember(member);
+	}
 	public int insertMember(Member member) {
 		return memberDao.insertMember(member);
 	}

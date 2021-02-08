@@ -27,11 +27,11 @@ public class LoginController {
 	@Autowired
 	private MemberService memberService;
 	
-	@GetMapping("/login/main")
-	public String loginMain(Model model) {
-		model.addAttribute("Member", new Member());
-		return "Login/LoginMain";
-	}
+//	@GetMapping("/login/main")
+//	public String loginMain(Model model) {
+//		model.addAttribute("Member", new Member());
+//		return "Login/LoginMain";
+//	}
 //	modal window
 	@RequestMapping("/login/mainAlt")
 	public String loginMainAlt(@ModelAttribute("class") Class newClass, Model model) {

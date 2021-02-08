@@ -1,5 +1,6 @@
 package com.mp.post.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,11 @@ public class PostService {
 		return postDao.upload_post2(post);
 	}
 	
-	public List<Post> read(Post post){
+	public HashMap read(Post post){
 		return postDao.read(post);
 	}
 
-	public List<Post> readJoin(Post post){
+	public List<HashMap> readJoin(Post post){
 		return postDao.readJoin(post);
 	}
 

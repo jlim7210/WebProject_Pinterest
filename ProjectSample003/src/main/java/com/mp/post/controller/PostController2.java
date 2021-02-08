@@ -1,5 +1,6 @@
 package com.mp.post.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,10 +39,10 @@ public class PostController2 {
 	@Autowired
 	private ReplyService replyService;
 
-	@RequestMapping("/postMain")
-	public String postMain() {
-		return "Post/PostMain";
-	}
+//	@RequestMapping("/postMain")
+//	public String postMain() {
+//		return "Post/PostMain";
+//	}
 	
 //	@RequestMapping("/upload")
 //	public String write() {
@@ -93,16 +94,16 @@ public class PostController2 {
 //		return "Post/PostMain";
 //	}
 	
-	@RequestMapping("/view")
-	public String view(HttpServletRequest request, HttpServletResponse response, @RequestParam(defaultValue="1") int curBoard) {
-		List<Post> result = postService.read(new Post());
-		HttpSession httpSession = request.getSession();
-		
-//		int listcnt = pageService.countBoard(curBoard);
-		
-		httpSession.setAttribute("list", result);
-		return "Post/PostRead";
-	}
+//	@RequestMapping("/view")
+//	public String view(HttpServletRequest request, HttpServletResponse response, @RequestParam(defaultValue="1") int curBoard) {
+//		List<HashMap> result = postService.readJoin(new Post());
+//		HttpSession httpSession = request.getSession();
+//		System.out.println(result.get(0).get("chg_file_name"));
+////		int listcnt = pageService.countBoard(curBoard);
+//		
+//		httpSession.setAttribute("list", result);
+//		return "Post/PostRead";
+//	}
 
 //	@GetMapping("/view_detail")
 //	public String view_detail(HttpServletRequest request, HttpServletResponse response) {
@@ -119,21 +120,19 @@ public class PostController2 {
 		Post search = new Post();
 		search.setPost_id(pstID);
 		List<Map> repOsrc = replyService.idx_rep_bPid(pstID);
-		
-//		Post result = postService.readJoin(search).get(0);
-//		request.setAttribute("detail", result);
 		request.setAttribute("detail", postService.readJoin(search).get(0));
 		request.setAttribute("replyList", repOsrc);
-		return "Post/Detail/Detail";
+		return "Post/Detail/Detail2";
 	}
 
 	@GetMapping("/edit")
 	public String edit(HttpServletRequest request, HttpServletResponse response) {
 		Post search = new Post();
 		search.setPost_id(Integer.parseInt(request.getParameter("num")));
-		Post result = postService.read(search).get(0);
-		request.setAttribute("detail", result);
-		return "Post/Update/Edit";
+//		Map result = (HashMap) postService.read(search).get(0);
+//		request.setAttribute("detail", result);
+		request.setAttribute("detail", postService.readJoin(search).get(0));
+		return "Post/Update/Edit2";
 	}
 
 }

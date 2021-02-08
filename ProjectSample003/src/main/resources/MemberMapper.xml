@@ -31,6 +31,11 @@
 			</if>
 		</trim>
 	</select>
+	<select id="loginMember" parameterType="com.mp.member.vo.Member"
+		resultType="com.mp.member.vo.Member">
+		select * from member
+		where member_acc = #{member_acc} AND member_pw = #{member_pw}
+	</select>
 
 	<update id="edit" parameterType="com.mp.member.vo.Member">
 		update member

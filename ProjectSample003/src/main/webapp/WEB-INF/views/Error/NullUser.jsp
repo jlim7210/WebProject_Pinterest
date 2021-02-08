@@ -9,7 +9,7 @@
 <body>
 <script>
 alert('please sign in first');
-document.location.href = '/ProjectSample003/login/main';
+document.location.href = '/ProjectSample003/main';
 </script>
 </body>
 </html>

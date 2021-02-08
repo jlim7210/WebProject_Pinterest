@@ -19,6 +19,9 @@ public class MemberDao {
 	public List<Member> indexMember(Member member){
 		return sqlSession.getMapper(MemberMapper.class).indexMember(member);
 	}
+	public List<Member> loginMember(Member member){
+		return sqlSession.getMapper(MemberMapper.class).loginMember(member);
+	}
 	public int insertMember(Member member) {
 		return sqlSession.getMapper(MemberMapper.class).insertMember(member);
 	}

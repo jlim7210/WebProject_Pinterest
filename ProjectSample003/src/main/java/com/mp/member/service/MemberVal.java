@@ -3,7 +3,12 @@ package com.mp.member.service;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
@@ -39,6 +44,17 @@ public class MemberVal {
 		}else if(id_count == 0 || name_count == 0) {
 			result.setResult_code("0");
 			result.setResult_msg("id created");
+		}
+		return result;
+	}
+	
+	public static boolean is_logged_in(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession hs = request.getSession();
+		Object uqid = hs.getAttribute("login_uqid");
+		boolean result = false;
+		if(uqid == null) {
+		}else {
+			result = true;
 		}
 		return result;
 	}

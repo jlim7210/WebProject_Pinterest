@@ -10,6 +10,7 @@ import com.mp.member.vo.Member;
 public interface MemberMapper {
 
 	public List<Member> indexMember(Member member);
+	public List<Member> loginMember(Member member);
 	public int insertMember(Member member);
 	public int edit(Member member);
 	public int delete(Member member);

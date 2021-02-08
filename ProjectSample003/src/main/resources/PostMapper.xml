@@ -51,7 +51,10 @@
 		from post p
 		join member m
 		on p.uploader_uqid = m.member_uqid
-
+		<if test="post_id != 0">
+		where
+		post_id = #{post_id}
+		</if>
 	</select>
 
 	<select id="readJoin" parameterType="com.mp.post.vo.Post"
@@ -63,6 +66,7 @@
 		p.post_content,
 		p.cre_date,
 		p.chg_file_name,
+		p.uploader_uqid,
 		m.member_name
 		from post p
 		join member m
@@ -76,10 +80,10 @@
 	<update id="edit" parameterType="com.mp.post.vo.Post">
 		update post
 		set
-		board_id =
-		#{board_id},
+		board_id = #{board_id},
 		post_title = #{post_title},
 		post_content = #{post_content},
+		org_file_name = #{org_file_name},
 		chg_file_name = #{chg_file_name},
 		cre_date = NOW()
 		where post_id = #{post_id}

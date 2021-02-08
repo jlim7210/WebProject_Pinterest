@@ -32,6 +32,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequestMapping("/member")
+//@RequestMapping
 public class MemberController {
 
 	@Autowired
@@ -84,22 +85,23 @@ public class MemberController {
 	public String memberInfo(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		Member key = new Member();
-		key.setMember_name((String) request.getAttribute("login_name"));
+		key.setMember_uqid((int) session.getAttribute("login_uqid"));
 		session.setAttribute("user", memberService.indexMember(key).get(0));
-		return "Member/memberInfo/infoMain";
+		return "Member/memberinfo2/infoMain";
 	}
 
 	@RequestMapping("/info/edit")
 	public String memberEdit(HttpServletRequest request, HttpServletResponse response) {
 		HttpSession session = request.getSession();
 		Member key = new Member();
-		key.setMember_name((String) request.getAttribute("login_name"));
+		key.setMember_name((String) session.getAttribute("login_name"));
 		session.setAttribute("user", memberService.indexMember(key).get(0));
-		return "Member/memberInfo/infoEdit";
+//		return "Member/memberInfo/infoEdit";
+		return "Member/memberinfo2/infoEdit";
 	}
 
 	@RequestMapping("/info/close")
 	public String memberDel(HttpServletRequest request, HttpServletResponse response) {
-		return "Member/memberInfo/infoDel";
+		return "Member/memberinfo2/infoDel";
 	}
 }

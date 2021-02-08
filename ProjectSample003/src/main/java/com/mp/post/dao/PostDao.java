@@ -1,5 +1,6 @@
 package com.mp.post.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -24,13 +25,13 @@ public class PostDao {
 		return sqlSession.getMapper(PostMapper.class).upload_post2(post);
 	}
 	
-	public List<Post> read(Post post){
-		List<Post> result = sqlSession.getMapper(PostMapper.class).read(post);
+	public HashMap read(Post post){
+		HashMap result = sqlSession.getMapper(PostMapper.class).read(post);
 		return result;
 	}
 
-	public List<Post> readJoin(Post post){
-		List<Post> result = sqlSession.getMapper(PostMapper.class).readJoin(post);
+	public List<HashMap> readJoin(Post post){
+		List<HashMap> result = sqlSession.getMapper(PostMapper.class).readJoin(post);
 		return result;
 	}
 

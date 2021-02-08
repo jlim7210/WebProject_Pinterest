@@ -2,7 +2,9 @@ package com.mp.post.controller;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -75,18 +77,18 @@ public class PostController implements Validator {
 
 //	ajax gallery
 	@GetMapping("/post/read")
-	public List<Post> retrieve(Model model) {
-		ResultObject ro = new ResultObject(null, null);
-		List<Post> result = postService.readJoin(new Post());
-		model.addAttribute("result", result);
-		// return ResponseEntity.ok(ro);
+	public List<HashMap> retrieve(HttpServletRequest request, HttpServletResponse response) {
+		HttpSession httpSession = request.getSession();
+		List<HashMap> result = null;
+		result = postService.readJoin(new Post());
+		httpSession.setAttribute("list", result);
 		return result;
 	}
 
 	@GetMapping("/post/read/{post_id}")
 	public ResponseEntity retrieve_spc(Post post) {
 		ResultObject ro = new ResultObject(null, null);
-		List<Post> result = postService.read(post);
+		Map result = postService.read(post);
 		return ResponseEntity.ok(result);
 	}
 

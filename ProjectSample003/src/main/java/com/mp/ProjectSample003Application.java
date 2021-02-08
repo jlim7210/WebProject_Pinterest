@@ -1,5 +1,8 @@
 package com.mp;
 
+import java.io.IOException;
+import java.net.ServerSocket;
+
 import javax.sql.DataSource;
 
 import org.apache.ibatis.session.SqlSession;
@@ -11,10 +14,13 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
+
+import com.mp.interceptor.MvcConf;
 
 @MapperScan(basePackages = "com.mp.member.mapper")
 @SpringBootApplication
@@ -53,4 +59,5 @@ public class ProjectSample003Application {
 	    messageSource.setCacheSeconds(10); //reload messages every 10 seconds
 	    return messageSource;
 	}
+	
 }

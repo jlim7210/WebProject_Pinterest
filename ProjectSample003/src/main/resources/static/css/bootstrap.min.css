@@ -10204,9 +10204,12 @@ none
 .uriNav{
 	color: black !important;
 }
-.uriNav2{
-	margin-right: 30px !important;
+.signUp{
+	margin: 20px 0 0 0;
+	width: 60% !important;
+	background-color: #c3c3c3;
+	border: #c3c3c3;
 }
-span.fake {
-	display:none;
+.signUp:hover{
+	background-color: #929292;
 }

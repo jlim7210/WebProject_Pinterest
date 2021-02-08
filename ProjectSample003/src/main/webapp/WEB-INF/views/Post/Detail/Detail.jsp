@@ -18,7 +18,6 @@ textarea {
 	<jsp:include page="/WEB-INF/include/loginTemplate.jsp"></jsp:include>
 	<br>
 	<br>
-
 	<h1>hi im view detail</h1>
 	<p>post id : ${detail.post_id}</p>
 	<h3>${detail.post_title}</h3>
