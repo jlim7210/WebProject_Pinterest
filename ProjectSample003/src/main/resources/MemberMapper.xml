@@ -6,8 +6,8 @@
 
 	<insert id="insertMember"
 		parameterType="com.mp.member.vo.Member">
-		insert into member (member_acc, member_pw, member_name)
-		values (#{member_acc}, #{member_pw}, #{member_name})
+		insert into member (member_acc, member_pw, member_name, member_email)
+		values (#{member_acc}, #{member_pw}, #{member_name}, #{member_email})
 	</insert>
 
 	<select id="indexMember" parameterType="com.mp.member.vo.Member"

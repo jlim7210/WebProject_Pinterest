@@ -282,7 +282,7 @@
 			if(crn_uploader_uqid == crn_uqid){
 			var result = confirm('Do you want to delete the post '+crn_post_title+'?');
 			if(result){
-				var url = 'http://localhost:8080/ProjectSample003/post/delete';
+				var url = 'http://192.168.25.61:8080/ProjectSample003/post/delete';
 				$.ajax({
 					async : true,
 					method : 'post',
@@ -322,7 +322,7 @@
 		if(true){
 			Number(crn_post_id);
 			Number(crn_uqid);
-			var url = 'http://localhost:8080/ProjectSample003/reply/add';
+			var url = 'http://192.168.25.61:8080/ProjectSample003/reply/add';
 			$.ajax({
 				async : true,
 				method : 'post',
@@ -355,7 +355,7 @@
 			if(crn_uqid == reply_uqid){
 				var result = confirm("Do you want to delete this comment?");
 				if(result){
-					var url = 'http://localhost:8080/ProjectSample003/reply/delete';
+					var url = 'http://192.168.25.61:8080/ProjectSample003/reply/delete';
 					$.ajax({
 						async : true,
 						method : 'post',

@@ -152,7 +152,7 @@
 		document.getElementById('delete').addEventListener('click', function() {
 			var result = confirm("Do you want to close your account?");
 			if(result){
-			var url = 'http://localhost:8080/ProjectSample003/member/info/close';
+			var url = 'http://192.168.25.61:8080/ProjectSample003/member/info/close';
 			$.ajax({
 				async : true,
 				method : 'post',

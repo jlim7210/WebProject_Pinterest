@@ -34,6 +34,7 @@ public class MainController {
 	public String get_to_main(HttpServletRequest request) throws IOException {
 		String result = "";
 		HttpSession hs = request.getSession();
+		System.out.println("main controller / get_to_main");
 		if(hs.getAttribute("login_name")!=null) {
 			result = "redirect:/gallery";
 		}else {

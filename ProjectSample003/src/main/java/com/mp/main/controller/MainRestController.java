@@ -28,6 +28,7 @@ public class MainRestController {
 	
 	@PostMapping("/main/login")
 	public ResponseEntity mainLogin(@RequestBody @Valid Member member, HttpServletRequest request, HttpServletResponse response) {
+		System.out.println("main rest controller / mainLogin");
 		System.out.println(member.getMember_acc());
 		System.out.println(member.getMember_pw());
 		member.setMember_name(null);

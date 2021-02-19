@@ -147,7 +147,7 @@
 		document.getElementById('submit').addEventListener('click', function() {
 			var result = confirm("Do you want to confirm edit?");
 			if(result){
-				var url = 'http://localhost:8080/ProjectSample003/info/editR';
+				var url = 'http://192.168.25.61:8080/ProjectSample003/info/editR';
 				$.ajax({
 					async : true,
 					method : 'post',

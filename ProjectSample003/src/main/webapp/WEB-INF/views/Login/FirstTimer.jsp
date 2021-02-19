@@ -125,8 +125,6 @@
 			    <input type="password" id="inputPassword_signup" class="form-control" placeholder="Password" required>
 			    <label for="inputPassword" class="visually-hidden">Name</label>
 			    <input type="text" id="inputName_signup" class="form-control" placeholder="Name" required>
-			    <label for="inputPassword" class="visually-hidden">Email</label>
-			    <input type="email" id="inputAddr_signup" class="form-control" placeholder="Email" required>
 			    <button class="w-100 btn btn-lg btn-primary signIn" type="submit" onclick="signUp();">Confirm</button><br><br>
 			    <a href="#" class="findPW" data-dismiss="modal" data-toggle="modal" data-target="#exampleModal">계정을 이미 가지고 계신가요?</a>
 			    <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
@@ -160,7 +158,7 @@
 		if($('#inputEmail').val() == "" || $('#inputPassword').val() == ""){
 			return;
 		}
-		var url = 'http://192.168.25.61:8080/ProjectSample003/login/val';
+		var url = 'http://localhost:8080/ProjectSample003/login/val';
 		$.ajax({
 			async : false,
 			method : 'post',
@@ -175,8 +173,7 @@
 			},
 			success : function(data) {
 				document.cookie = 'remember_id='+$('remember_id').val();
-				//var url = 'http://localhost:8080/ProjectSample003/post/read';
-				var url = 'http://192.168.25.61:8080/ProjectSample003/post/read';
+				var url = 'http://localhost:8080/ProjectSample003/post/read';
 				$.ajax({
 					method : 'get',
 					url : url,
@@ -196,7 +193,7 @@
 		if($('#inputEmail_signup').val() == "" || $('#inputPassword_signup').val() == "" || $('#inputName_signup').val() == ""){
 			return;
 		}
-		var url = 'http://192.168.25.61:8080/ProjectSample003/signUp';
+		var url = 'http://localhost:8080/ProjectSample003/signUp';
 		$.ajax({
 			async : false,
 			method : 'post',
@@ -204,8 +201,7 @@
 			data : JSON.stringify({
 				member_acc : $('#inputEmail_signup').val(),
 				member_pw : $('#inputPassword_signup').val(),
-				member_name : $('#inputName_signup').val(),
-				member_email : $('#inputAddr_signup').val()
+				member_name : $('#inputName_signup').val()
 			}),
 			dataType : 'text',
 			contentType : 'application/json',

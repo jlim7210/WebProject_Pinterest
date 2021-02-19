@@ -1,5 +1,6 @@
 package com.mp.member.controller;
 
+import java.io.IOException;
 import java.net.URI;
 
 import javax.servlet.http.Cookie;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.mp.email.Entry;
 import com.mp.member.service.MemberService;
 import com.mp.member.service.MemberVal;
 import com.mp.member.vo.Member;
@@ -34,6 +36,8 @@ public class MemberRestController {
 	private MemberService memberService;
 	@Autowired
 	private MemberVal memberVal;
+	@Autowired
+	private Entry entry;
 	
 	@PostMapping("/info/editR")
 	public ResponseEntity edit(@RequestBody Member member, HttpServletRequest request, HttpServletResponse response) {
@@ -55,6 +59,7 @@ public class MemberRestController {
 	@PostMapping("/login/val")
 	public ResponseEntity validation(@RequestBody Member member, HttpServletRequest request, HttpServletResponse response) {
 		HttpSession httpSession = request.getSession();
+		System.out.println("member rest con / validation");
 		if(memberService.loginMember(member).size() == 1) {
 //			session에 정보 담기
 			Member minfo = memberService.indexMember(member).get(0);
@@ -69,7 +74,7 @@ public class MemberRestController {
 	}
 	
 	@PostMapping("/signUp")
-	public ResponseEntity new_mem(@RequestBody @Valid  Member member, Errors errors, HttpServletRequest request, HttpServletResponse response, BindingResult result) {
+	public ResponseEntity new_mem(@RequestBody @Valid  Member member, Errors errors, HttpServletRequest request, HttpServletResponse response, BindingResult result) throws IOException {
 		HttpSession httpSession = request.getSession();
 		if( result.hasErrors() ) {
 			return ResponseEntity.badRequest().build();
@@ -87,6 +92,19 @@ public class MemberRestController {
 		
 		Cookie cookie = new Cookie("first_time", "true");
 		response.addCookie(cookie);
+		
+//		이메일 보내기
+		entry.setBODY(member.getMember_email().hashCode());
+		entry.setSUBJECT("안녕하세요"+member.getMember_name()+"!");
+		entry.setTO(member.getMember_email());
+		try {
+			entry.send_email();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		entry.close_entry();
+//		------------
+		
 		return ResponseEntity.ok().build();
 	}
 	

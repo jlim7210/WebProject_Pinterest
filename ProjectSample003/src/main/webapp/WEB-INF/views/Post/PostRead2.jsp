@@ -67,17 +67,6 @@
       <span class="navbar-toggler-icon"></span>
     </button>
 
-	<!-- <style type="text/css">
-   		.me-auto { margin-right: 30px !important;}
-   		.navbar{justify-content: space-between;}
-   		@media (max-width: 768px)
-		.navbar {
-		    display: flex !important;
-		}
-		.collapse:not(.show) {
-		    display: -webkit-inline-box;
-		}
-  	</style> -->
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
       <ul class="navbar-nav me-auto mb-2 mb-md-0">
         <li class="nav-item active">
@@ -108,6 +97,28 @@
 
 <!-- first timer  -->
 
+	<div class="modal fade" id="firstTimer" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	  <div class="modal-dialog" role="document">
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h5 class="h3 mb-3 fw-normal" id="exampleModalLabel"></h5>
+			<img src="img\logo\logo.png" title="logo" alt="logo" width="33.95" height="33.95" class="modal-logo">
+	        <div class="close" data-dismiss="modal" aria-label="Close" th:text="x">
+	        </div>
+	      </div>
+	      <div class="modal-body">
+	        <main class="form-signin">
+			  <!-- class="mb-4" -->
+			    <h1 class="h3 mb-3 fw-normal welcome">계정을 인증해주세요!</h1>
+			    <p class="mb-3 fw-normal">계정을 인증해야만 안전한 사용이 가능합니다. 이메일을 확인해주세요!</p>
+			    <input type="text" id="verf_code" class="form-control" name="verf_code" placeholder="인증코드" required autofocus>
+			    <button class="w-100 btn btn-lg btn-primary signIn" type="submit">인증</button>
+			    <p class="mt-5 mb-3 text-muted">&copy; 2020-2021</p>
+			</main>
+	      </div>
+	    </div>
+	  </div>
+	</div>
 
 <!-- first timer  -->
 
@@ -192,16 +203,6 @@
 		    alert("Do something here!");
 		    document.cookie = "first_time=false;";
 		}
-		/* var url = 'http://localhost:8080/ProjectSample003/post/read';
-		$.ajax({
-			method : 'get',
-			url : url,
-			async:false,
-			success : function(data) {
-			},
-			error : function(data) {
-			}
-		}) */
 	</script>
   </body>
 </html>

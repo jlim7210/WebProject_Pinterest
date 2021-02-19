@@ -26,4 +26,6 @@ public class Member {
 	private int member_rank;
 //	@org.hibernate.validator.constraints.NotEmpty
 	private String member_name;
+	private String member_email;
+	private int member_verf;
 }
