@@ -162,7 +162,7 @@
 		}
 		var url = 'http://192.168.25.61:8080/ProjectSample003/login/val';
 		$.ajax({
-			//이쪽 로직 개선 필요함
+			//이쪽 로직 개선 필요
 			async : false,
 			method : 'post',
 			url : url,
